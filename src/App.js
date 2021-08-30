@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom';
 import Nav from './components/Nav'
 import Home from './views/Home';
+import Register from './views/Register';
 
 export default class App extends Component {
   constructor(props){
@@ -24,6 +25,7 @@ export default class App extends Component {
         <div className='container bg-white border-start border-end vh-100'>
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/register' component={Register} />
           </Switch>
         </div>
       </div>
