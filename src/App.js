@@ -6,9 +6,9 @@ import Home from './views/Home';
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div className='bg-secondary'>
         <Nav />
-        <div className='container'>
+        <div className='container bg-white border-start border-end vh-100'>
           <Switch>
             <Route exact path='/' component={Home} />
           </Switch>
