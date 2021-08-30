@@ -24,7 +24,7 @@ export default class Nav extends Component {
                         </li>
                     </ul>
                     <ul className="navbar-nav ms-auto">
-                        {this.props.isLoggedIn ? (<LoggedInNav />) : (<LoggedOutNav />)}
+                        {this.props.isLoggedIn ? (<LoggedInNav logUserOut={this.props.logUserOut} />) : (<LoggedOutNav />)}
                     </ul>
                     </div>
                 </div>

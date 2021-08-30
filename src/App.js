@@ -62,11 +62,19 @@ export default class App extends Component {
         .catch(err => console.error(err))
     }
 
+    logUserOut = () => {
+        localStorage.removeItem('token')
+        this.setState({
+            isLoggedIn: false
+        })
+        this.flashMessage('You have successfully logged out', 'success')
+    }
+
   
     render() {
         return (
         <div className='bg-secondary'>
-            <Nav isLoggedIn={this.state.isLoggedIn} />
+            <Nav isLoggedIn={this.state.isLoggedIn} logUserOut={this.logUserOut}/>
             <div className='container bg-white border-start border-end vh-100'>
                 {this.state.message ? <Message message={this.state.message} category={this.state.category} clearMessage={this.clearMessage}/> : null}
                 <Switch>
