@@ -57,6 +57,7 @@ export default class App extends Component {
              })
              this.flashMessage(`${username} has logged in`, 'success')
              localStorage.setItem('token', data.token)
+             localStorage.setItem('user_id', data.user_id)
             }
         )
         .catch(err => console.error(err))
