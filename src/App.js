@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom';
+import Message from './components/Message';
 import Nav from './components/Nav'
 import Home from './views/Home';
 import Login from './views/Login';
@@ -10,12 +11,28 @@ export default class App extends Component {
         super(props);
         this.state = {
             isLoggedIn: localStorage.getItem('token') !== null,
-            products: []
+            products: [],
+            message: null,
+            category: null
         }
     }
 
     componentDidMount(){
         console.log('Hello')
+    }
+
+    flashMessage = (message, category='primary') => {
+        this.setState({
+            message: message,
+            category: category
+        })
+    }
+
+    clearMessage = () => {
+        this.setState({
+            message: null,
+            category: null
+        })
     }
 
     logUserIn = (e) => {
@@ -38,6 +55,7 @@ export default class App extends Component {
             this.setState({
                 isLoggedIn: true
              })
+             this.flashMessage(`${username} has logged in`, 'success')
              localStorage.setItem('token', data.token)
             }
         )
@@ -50,11 +68,12 @@ export default class App extends Component {
         <div className='bg-secondary'>
             <Nav isLoggedIn={this.state.isLoggedIn} />
             <div className='container bg-white border-start border-end vh-100'>
-            <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/register' component={Register} />
-                <Route exact path='/login' render={() => <Login logUserIn={this.logUserIn} />}/>
-            </Switch>
+                {this.state.message ? <Message message={this.state.message} category={this.state.category} clearMessage={this.clearMessage}/> : null}
+                <Switch>
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/register' component={Register} />
+                    <Route exact path='/login' render={() => <Login logUserIn={this.logUserIn} isLoggedIn={this.state.isLoggedIn}/>}/>
+                </Switch>
             </div>
         </div>
         )
