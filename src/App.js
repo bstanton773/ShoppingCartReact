@@ -6,6 +6,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import MyInfo from './views/MyInfo';
 import Register from './views/Register';
+import SingleProduct from './views/SingleProduct'
 
 export default class App extends Component {
     constructor(props){
@@ -87,6 +88,7 @@ export default class App extends Component {
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/login' render={() => <Login logUserIn={this.logUserIn} isLoggedIn={this.state.isLoggedIn}/>} />
                     <Route exact path='/my-info' render={() => <MyInfo flashMessage={this.flashMessage} />} />
+                    <Route exact path='/products/:id' component={SingleProduct} />
                 </Switch>
             </div>
         </div>

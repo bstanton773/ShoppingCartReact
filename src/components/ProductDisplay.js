@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export default class ProductDisplay extends Component {
     render() {
@@ -16,7 +17,9 @@ export default class ProductDisplay extends Component {
                         <p className="card-text prod-description">
                         {prod.description}
                         </p>
-                        <button className="btn btn-secondary w-100">Read More</button>
+                        <Link to={`products/${prod.id}`} >
+                            <button className="btn btn-secondary w-100">Read More</button>
+                        </Link>
                         <button className="btn btn-primary w-100">Add To Cart</button>
                     </div>
                 </div>
