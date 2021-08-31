@@ -40,22 +40,27 @@ export default class EditAccountInfo extends Component {
     render() {
         return (
             <form onSubmit={this.updateAccountInfo}>
-                <div className='form-group mx-3'>
-                    <fieldset>
-                        <label htmlFor='firstName'>First Name</label>
-                        <input type='text' className='form-control' name='firstName' defaultValue={this.props.userInfo.first_name} />
-                        <label htmlFor='lastName'>Last Name</label>
-                        <input type='text' className='form-control' name='lastName' defaultValue={this.props.userInfo.last_name} />
-                        <label htmlFor='username'>Username</label>
-                        <input type='text' className='form-control' name='username' defaultValue={this.props.userInfo.username} />
-                        <label htmlFor='email'>Email</label>
-                        <input type='text' className='form-control' name='email' defaultValue={this.props.userInfo.email} />
-                    </fieldset>
-                    <div className='my-3'>
+                <div className="card-header">
+                    General Account Information
+                </div>
+                <ul className="list-group list-group-flush">
+                    <li className="list-group-item">
+                        First Name: <input type='text' className='form-control d-inline-block' name='firstName' defaultValue={this.props.userInfo.first_name} />
+                    </li>
+                    <li className="list-group-item">
+                        Last Name: <input type='text' className='form-control' name='lastName' defaultValue={this.props.userInfo.last_name} />
+                    </li>
+                    <li className="list-group-item">
+                        Username: <input type='text' className='form-control' name='username' defaultValue={this.props.userInfo.username} />
+                    </li>
+                    <li className="list-group-item">
+                        Email: <input type='text' className='form-control' name='email' defaultValue={this.props.userInfo.email} />
+                    </li>
+                    <li className="list-group-item">
                         <input type='submit' className='btn btn-primary w-50' value='Update'></input>
                         <button className='btn btn-danger w-50' onClick={this.props.setEditState}>Cancel</button>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </form>
         )
     }

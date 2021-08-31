@@ -79,9 +79,9 @@ export default class App extends Component {
   
     render() {
         return (
-        <div className='bg-secondary'>
+        <div className='bg-danger'>
             <Nav isLoggedIn={this.state.isLoggedIn} logUserOut={this.logUserOut}/>
-            <div className='container bg-white border-start border-end v-100'>
+            <div className='container bg-white pt-5 min-vh-100'>
                 {this.state.message ? <Message message={this.state.message} category={this.state.category} clearMessage={this.clearMessage}/> : null}
                 <Switch>
                     <Route exact path='/' render={() => <Home products={this.state.products} />} />
