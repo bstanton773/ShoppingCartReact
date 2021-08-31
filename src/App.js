@@ -19,7 +19,9 @@ export default class App extends Component {
     }
 
     componentDidMount(){
-        console.log('Hello')
+        fetch('http://cart-api-66.herokuapp.com/products')
+        .then(res => res.json())
+        .then(data => this.setState({products:data.products}))
     }
 
     flashMessage = (message, category='primary') => {
@@ -78,10 +80,10 @@ export default class App extends Component {
         return (
         <div className='bg-secondary'>
             <Nav isLoggedIn={this.state.isLoggedIn} logUserOut={this.logUserOut}/>
-            <div className='container bg-white border-start border-end vh-100'>
+            <div className='container bg-white border-start border-end v-100'>
                 {this.state.message ? <Message message={this.state.message} category={this.state.category} clearMessage={this.clearMessage}/> : null}
                 <Switch>
-                    <Route exact path='/' component={Home} />
+                    <Route exact path='/' render={() => <Home products={this.state.products} />} />
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/login' render={() => <Login logUserIn={this.logUserIn} isLoggedIn={this.state.isLoggedIn}/>} />
                     <Route exact path='/my-info' render={() => <MyInfo flashMessage={this.flashMessage} />} />
