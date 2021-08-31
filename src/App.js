@@ -4,6 +4,7 @@ import Message from './components/Message';
 import Nav from './components/Nav'
 import Home from './views/Home';
 import Login from './views/Login';
+import MyInfo from './views/MyInfo';
 import Register from './views/Register';
 
 export default class App extends Component {
@@ -64,7 +65,8 @@ export default class App extends Component {
     }
 
     logUserOut = () => {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token');
+        localStorage.removeItem('user_id');
         this.setState({
             isLoggedIn: false
         })
@@ -81,7 +83,8 @@ export default class App extends Component {
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/register' component={Register} />
-                    <Route exact path='/login' render={() => <Login logUserIn={this.logUserIn} isLoggedIn={this.state.isLoggedIn}/>}/>
+                    <Route exact path='/login' render={() => <Login logUserIn={this.logUserIn} isLoggedIn={this.state.isLoggedIn}/>} />
+                    <Route exact path='/my-info' render={() => <MyInfo />} />
                 </Switch>
             </div>
         </div>

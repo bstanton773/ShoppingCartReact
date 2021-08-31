@@ -9,7 +9,7 @@ export default class LoggedInNav extends Component {
                     My Account
                 </a>
                 <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><Link className="dropdown-item" to="/">My Info</Link></li>
+                    <li><Link className="dropdown-item" to="/my-info">My Info</Link></li>
                     <li><Link className="dropdown-item" to="/">My Cart</Link></li>
                     <li><hr className="dropdown-divider" /></li>
                     <li><Link to='/' className="dropdown-item" onClick={this.props.logUserOut}>Logout</Link></li>
