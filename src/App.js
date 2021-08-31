@@ -84,7 +84,7 @@ export default class App extends Component {
                     <Route exact path='/' component={Home} />
                     <Route exact path='/register' component={Register} />
                     <Route exact path='/login' render={() => <Login logUserIn={this.logUserIn} isLoggedIn={this.state.isLoggedIn}/>} />
-                    <Route exact path='/my-info' render={() => <MyInfo />} />
+                    <Route exact path='/my-info' render={() => <MyInfo flashMessage={this.flashMessage} />} />
                 </Switch>
             </div>
         </div>
